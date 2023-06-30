@@ -13,6 +13,7 @@ def _parse(file_name):
         # Skip invalid lines
         if len(splitted) == 4:
             error = {
+                'name': "{0}:{1}:{2}".format(splitted[0].strip(), splitted[1].strip(), splitted[2].strip()),
                 'file': splitted[0].strip(),
                 'line': splitted[1].strip(),
                 'col': splitted[2].strip(),
@@ -20,7 +21,7 @@ def _parse(file_name):
                 'code': splitted[3].strip()[:4]
             }
 
-            parsed[error['file']].append(error)
+            parsed[error['name']].append(error)
 
     return dict(parsed)
 
